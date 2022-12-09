@@ -56,3 +56,9 @@ project
     - link to repo
     - link to live
     - skills used (needs linking table/many to many relationship)
+    - promoted
+skills
+    - name
+    - experience level
+    - description of what i've done with it
+    - linked projects

@@ -1,3 +1,9 @@
+### CUSTOM STUFF ###
+./data/*
+
+
+### TEMPLATE STUFF ###
+
 # ---> Python
 # Byte-compiled / optimized / DLL files
 __pycache__/

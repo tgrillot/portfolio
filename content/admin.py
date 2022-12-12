@@ -3,5 +3,5 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(skill)
-admin.site.register(project)
+admin.site.register(skill, skillAdmin)
+admin.site.register(project, projectAdmin)

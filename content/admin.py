@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(skill, skillAdmin)
 admin.site.register(project, projectAdmin)
+admin.site.register(portfolioOwner,portfolioOwnerAdmin)

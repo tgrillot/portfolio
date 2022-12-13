@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib import admin
+from phonenumber_field.modelfields import PhoneNumberField #type: ignore #this import actually works
 
 # Create your models here.
 
@@ -42,3 +43,20 @@ class project(models.Model):
 class projectAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug":("name",)}
     list_display = ['name','tagline','promoted']
+
+class portfolioOwner(models.Model):
+    fname = models.CharField(max_length=50)
+    lname = models.CharField(max_length=50)
+    git1 = models.URLField(max_length=2048,blank=True)
+    git2 = models.URLField(max_length=2048,blank=True)
+    resumeDL = models.URLField(max_length=2048,blank=True)
+    bio = models.TextField()
+    email = models.EmailField()
+    phone = PhoneNumberField()
+
+    @property
+    def fullname(self):
+        return self.fname + ' ' + self.lname
+
+class portfolioOwnerAdmin(admin.ModelAdmin):
+    list_display = ['fullname','email','phone']

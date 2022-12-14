@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
-from phonenumber_field.modelfields import PhoneNumberField #type: ignore #this import actually works
+from phonenumber_field.modelfields import PhoneNumberField
+from tinymce.widgets import TinyMCE
 
 # Create your models here.
 
@@ -24,6 +25,9 @@ class skill(models.Model):
 class skillAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug":("name",)}
     list_display = ['name','blurb','explevel']
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE}
+    }
 
 class project(models.Model):
     name = models.CharField(max_length=50,blank=False,null=False,unique=True)
@@ -43,6 +47,9 @@ class project(models.Model):
 class projectAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug":("name",)}
     list_display = ['name','tagline','promoted']
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE}
+    }
 
 class portfolioOwner(models.Model):
     fname = models.CharField(max_length=50)
@@ -53,6 +60,7 @@ class portfolioOwner(models.Model):
     bio = models.TextField()
     email = models.EmailField()
     phone = PhoneNumberField()
+    tagline = models.CharField(max_length=300,blank=True)
 
     @property
     def fullname(self):
@@ -60,3 +68,19 @@ class portfolioOwner(models.Model):
 
 class portfolioOwnerAdmin(admin.ModelAdmin):
     list_display = ['fullname','email','phone']
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE}
+    }
+
+class education(models.Model):
+    institution = models.CharField(max_length=50)
+    award = models.CharField(max_length=50)
+    major = models.CharField(max_length=50,blank=True)
+    concentration = models.CharField(max_length=50,blank=True)
+    achievements = models.TextField(blank=True)
+
+class educationAdmin(admin.ModelAdmin):
+    list_display = ['institution','award','major',]
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE}
+    }

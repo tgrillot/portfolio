@@ -20,6 +20,8 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('tinymce/', include('tinymce.urls')), 
     
     path('', include('content.urls')),
     path('', views.home, name='home'),

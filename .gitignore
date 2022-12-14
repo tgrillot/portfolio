@@ -1,6 +1,6 @@
 ### CUSTOM STUFF ###
-data/
-
+.devcontainer
+.vscode
 
 ### TEMPLATE STUFF ###
 

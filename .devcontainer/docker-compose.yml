@@ -1,3 +1,11 @@
+x-app: &portfolio
+  build:
+    context: ../
+    dockerfile: .devcontainer/dockerfile
+  volumes:
+    - ..:/code
+  restart: "unless-stopped"
+
 services:
   db:
     container_name: portfolio-pg
@@ -11,11 +19,7 @@ services:
       
   web:
     container_name: portfolio
-    build:
-      context: ../
-      dockerfile: .devcontainer/dockerfile
-    volumes:
-      - ..:/code
+    <<: *portfolio
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "18000:8000"
@@ -25,3 +29,9 @@ services:
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
+
+  tailwind:
+    container_name: tailwind_watcher
+    <<: *portfolio
+    command: sh -c "sudo chmod -R 777 /code/.devcontainer/data/db && tailwindcss -i /code/static/styles/main.css -o /code/static/styles/tw.css -wp"
+    tty: true

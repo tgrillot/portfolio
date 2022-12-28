@@ -1,11 +1,3 @@
-x-app: &portfolio
-  build:
-    context: ../
-    dockerfile: .devcontainer/dockerfile
-  volumes:
-    - ..:/code
-  restart: "unless-stopped"
-
 services:
   db:
     container_name: portfolio-pg
@@ -19,7 +11,11 @@ services:
       
   web:
     container_name: portfolio
-    <<: *portfolio
+    build:
+      context: ../
+      dockerfile: .devcontainer/dockerfile
+    volumes:
+      - ..:/code
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "18000:8000"
@@ -29,10 +25,3 @@ services:
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - db
-
-  tailwind:
-    <<: *portfolio
-    command: "python manage.py tailwind start"
-    # Without tty, no stdin, and tailwind watcher aborts
-    # https://github.com/tailwindlabs/tailwindcss/issues/5324
-    tty: true

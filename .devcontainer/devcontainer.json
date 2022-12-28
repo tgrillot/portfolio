@@ -23,12 +23,12 @@
 		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
 	},
 
-	"features": {
-		"node": {
-			"version": "lts",
-			"nodeGypDependencies": true
-		}
-	},
+	// "features": {
+	// 	"node": {
+	// 		"version": "lts",
+	// 		"nodeGypDependencies": true
+	// 	}
+	// },
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [

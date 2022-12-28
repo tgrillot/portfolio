@@ -6,10 +6,9 @@ ENV PIP_ROOT_USER_ACTION=ignore
 WORKDIR /code
 RUN apt-get update \
   && apt-get install -y build-essential curl \
-  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
-  && apt-get install -y nodejs --no-install-recommends \
-  && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man \
-  && apt-get clean
-# ARG NODE_VERSION="lts"
+  && curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.2.4/tailwindcss-linux-arm64 \
+  && chmod +x tailwindcss-linux-arm64 \
+  && mv tailwindcss-linux-arm64 tailwindcss \
+  && mv tailwindcss /usr/bin
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt

@@ -1,7 +1,19 @@
-<nav>
-    <a href="{% url 'home' %}">Home</a>
-    <a href="{% url 'about' %}">About Me</a>
-    <a href="{% url 'projects' %}">Projects</a>
-    <a href="{% url 'skills' %}">Skills</a>
-    <a href="{% url 'contact' %}">Contact</a>
-</nav>
+<nav class="font-sans flex flex-col text-center content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-white shadow sm:items-baseline w-full">
+    <div class="mb-2 sm:mb-0 inner">
+  
+      <a href="{% url 'home' %}" class="text-2xl no-underline text-grey-darkest hover:text-blue-dark font-sans font-bold">TravisGrillot.dev</a><br>
+      <span class="text-xs text-grey-dark">I create tools for business.</span>
+  
+    </div>
+  
+    <div class="sm:mb-0 self-center">
+      <!-- <div class="h-10" style="display: table-cell, vertical-align: middle;"> -->
+      <a href="{% url 'home' %}" class="text-md no-underline text-black hover:text-gray-100 ml-2 px-1">Home</a>
+      <a href="{% url 'about' %}" class="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-1">About Me</a> 
+      <!-- <a href="/two" class="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">About Us</a> -->
+      <a href="{% url 'projects' %}" class="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-1">Projects</a>
+      <!-- </div> -->
+      <a href="{% url 'skills' %}" class="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-1">Skills</a>
+      <a href="{% url 'contact' %}" class="text-md no-underline text-grey-darker hover:text-blue-dark ml-2 px-1">Contact</a>
+    </div>
+</nav> 

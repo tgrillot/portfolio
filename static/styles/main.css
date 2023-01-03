@@ -2,3 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Colors */
+:root {
+    --a-primary: #5B7F57;
+    --a-visited: #7BAE7F;
+    --a-hover: #7BAE7F;
+    --secondary-bg: #4a306d;
+    --primary-bg: #fceff9;
+}
+
+body {
+    color: black;
+    background-color: var(--primary-bg);
+}
+
+a {
+    color: var(--a-primary)
+}
+a:hover {
+    color: var(--a-hover)
+}
+a:visited {
+    color: var(--a-visited)
+} 

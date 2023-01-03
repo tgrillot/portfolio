@@ -56,6 +56,8 @@ class portfolioOwner(models.Model):
     lname = models.CharField(max_length=50)
     git1 = models.URLField(max_length=2048,blank=True)
     git2 = models.URLField(max_length=2048,blank=True)
+    linkedin = models.URLField(max_length=2048,blank=True)
+    upwork = models.URLField(max_length=2048,blank=True)
     resumeDL = models.URLField(max_length=2048,blank=True)
     bio = models.TextField()
     email = models.EmailField()
@@ -81,6 +83,19 @@ class education(models.Model):
 
 class educationAdmin(admin.ModelAdmin):
     list_display = ['institution','award','major',]
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE}
+    }
+
+class work(models.Model):
+    company = models.CharField(max_length=50)
+    position = models.CharField(max_length=50)
+    startdate = models.DateField()
+    enddate = models.DateField()
+    description = models.TextField()
+
+class workAdmin(admin.ModelAdmin):
+    list_display = ['company','position','startdate','enddate']
     formfield_overrides = {
         models.TextField: {'widget': TinyMCE}
     }

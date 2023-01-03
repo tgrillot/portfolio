@@ -27,3 +27,17 @@ def skills(request):
     skills = skill.objects.all()
     context = {'skills':skills}
     return render(request, 'content/skills.html', context)
+
+def about(request):
+    owner = portfolioOwner.objects.get(id=1)
+    edu = education.objects.all()
+    wrk = work.objects.all()
+    context = {
+        'bio':owner.bio,
+        'edu':edu,
+        'work':wrk,
+        }
+    return render(request, 'content/about.html', context)
+
+def contact(request):
+    return render(request, 'content/contact.html')

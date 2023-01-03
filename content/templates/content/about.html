@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+<div class="items-center h-full">
+	<div x-data="setup()">
+		<ul class="flex justify-left items-center my-4">
+			<template x-for="(tab, index) in tabs" :key="index">
+				<li class="cursor-pointer py-2 px-4 text-a-primary border-b-8"
+					:class="activeTab===index ? 'text-a-hover border-a-hover' : ''" @click="activeTab = index"
+					x-text="tab"></li>
+			</template>
+		</ul>
+
+		<div class="w-full p-16 text-center">
+			<div x-show="activeTab===0">{{bio|safe}}</div>
+			<div x-show="activeTab===1">Content 2</div>
+			<div x-show="activeTab===2">Content 3</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function setup() {
+    return {
+      activeTab: 0,
+      tabs: [
+          "Bio",
+          "Education",
+          "Work History",
+      ]
+    };
+  };
+</script>
+
+{% endblock %}

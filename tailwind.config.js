@@ -8,7 +8,18 @@ module.exports = {
     // '../../**/*.py'
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "a-primary":"var(--a-primary)",
+        "a-visited":"var(--a-visited)",
+        "a-hover":"var(--a-hover)",
+        "secondary-bg":"var(--secondary-bg)",
+        "primary-bg":"var(--primary-bg)",
+      },
+      lineHeight: {
+        "14":"3.5rem",
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),

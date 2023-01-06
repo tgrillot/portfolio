@@ -22,6 +22,3 @@ a {
 a:hover {
     color: var(--a-hover)
 }
-a:visited {
-    color: var(--a-visited)
-} 

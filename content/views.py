@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import FileResponse, Http404
+from portfolio.settings import MEDIA_URL
 
 from .models import *
 
@@ -29,11 +31,16 @@ def skills(request):
     return render(request, 'content/skills.html', context)
 
 def about(request):
-    owner = portfolioOwner.objects.get(id=1)
+    try:
+        owner = portfolioOwner.objects.all()[0]
+        bio = owner.bio
+    except Exception:
+        bio = 'No portfolio owner configured.'
+
     edu = education.objects.all()
     wrk = work.objects.all()
     context = {
-        'bio':owner.bio,
+        'bio':bio,
         'edu':edu,
         'work':wrk,
         }
@@ -41,3 +48,14 @@ def about(request):
 
 def contact(request):
     return render(request, 'content/contact.html')
+
+def view_resume(request):
+    try:
+        filename = portfolioOwner.objects.all()[0].resume.path
+        path = os.path.join(MEDIA_URL, filename)
+    except:
+        path = '#'
+    try:
+        return FileResponse(open(path, 'rb'), content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()

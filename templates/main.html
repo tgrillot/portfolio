@@ -13,12 +13,18 @@
         {% include 'navbar.html' %}
     </header>
     <main class="flex-grow items-center w-3/4 m-auto">
+
+        {% if request.get_full_path != "/contact" %}
+            {% include 'social_bar.html' %}
+        {% endif %}
+
         {% block content %}
         {% endblock content %}
     </main>
     <footer>
         {% include 'footer.html' %}
     </footer>
+
 </body>
 </html>
 

@@ -4,8 +4,13 @@ Navbar
     - About
     - Projects
     - contact
-    - code repo(s)
     - light/dark mode
+
+Social bar
+    - gitea
+    - github
+    - linkedin
+    - upwork
 
 Pages:
 Home Page

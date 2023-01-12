@@ -9,7 +9,6 @@ module.exports = {
     extend: {
       colors: {
         "a-primary":"var(--a-primary)",
-        "a-visited":"var(--a-visited)",
         "a-hover":"var(--a-hover)",
         "secondary-bg":"var(--secondary-bg)",
         "primary-bg":"var(--primary-bg)",

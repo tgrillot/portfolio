@@ -6,11 +6,10 @@ def returnOwner(request):
         context = {
             'name':owner.fullname,
             'tagline':owner.tagline,
-            'gitea':owner.git2,
-            'github':owner.git1,
+            'gitea':owner.gitea,
+            'github':owner.github,
             'linkedin':owner.linkedin,
             'upwork':owner.upwork,
-            'resume':owner.resume
             }
     except Exception:
         context = {
@@ -20,6 +19,5 @@ def returnOwner(request):
             'github':'#',
             'linkedin':'#',
             'upwork':'#',
-            'resume':'#'
         }
     return context

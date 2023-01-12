@@ -1,8 +1,6 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
-
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 <div class="items-center h-full">
 	<div x-data="setup()">
@@ -22,17 +20,6 @@
 	</div>
 </div>
 
-<script>
-	function setup() {
-    return {
-      activeTab: 0,
-      tabs: [
-          "Bio",
-          "Education",
-          "Work History",
-      ]
-    };
-  };
-</script>
+<script src="{% static 'js/about.js' %}"></script>
 
 {% endblock %}

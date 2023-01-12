@@ -30,8 +30,8 @@ def set_resume_filename(instance, filename):
 class portfolioOwner(models.Model):
     fname = models.CharField(max_length=50,blank=True)
     lname = models.CharField(max_length=50,blank=True)
-    git1 = models.URLField(max_length=2048,blank=True)
-    git2 = models.URLField(max_length=2048,blank=True)
+    github = models.URLField(max_length=2048,blank=True)
+    gitea = models.URLField(max_length=2048,blank=True)
     linkedin = models.URLField(max_length=2048,blank=True)
     upwork = models.URLField(max_length=2048,blank=True)
     resume = models.FileField(upload_to=set_resume_filename,blank=True,validators=[validate_resume_filetype])

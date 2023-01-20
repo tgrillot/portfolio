@@ -8,5 +8,8 @@ urlpatterns = [
     path('skills/',views.skills,name='skills'),
     path('about', views.about, name='about'),
     path('contact', views.contact, name='contact'),
+    path('contact/message_sent', views.contact, name='sent'),
     path('resume', views.view_resume, name='resume'),
 ]
+
+handler404 = "portfolio.views.custom404"

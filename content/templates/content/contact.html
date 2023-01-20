@@ -3,8 +3,20 @@
 {% block content %}
 
 <div class="items-center text-center pt-3">
-    <h1>Check me out here:</h1>
+    <h1 class="font-bold leading-tight text-3xl mt-0 mb-2">Check me out here:</h1>
     {% include 'social_bar.html' %}
-    <h1>Or drop me a line...</h1>
+    {% if request.get_full_path == "/contact" %}
+      <h1 class="font-bold leading-tight text-3xl mt-7 mb-1">Or drop me a line...</h1>
+      <form method="post" action="" class="flex flex-col w-1/2 m-auto mb-4 space-y-4">
+          {% csrf_token %}
+          {{ form }}
+          <div class="form-actions">
+            <button type="submit" class="bg-a-primary hover:trasition-all ease-in-out duration-300 hover:scale-110 text-white font-bold py-2 px-4 rounded">Send</button>
+          </div>
+      </form>
+    {% else %}
+      <h1 class="font-bold leading-tight text-3xl mt-7 mb-1 mt-24">Thanks for the email! I will reply as soon as possible!</h1>
+    {% endif %}
 </div>
+
 {% endblock %}

@@ -2,21 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Colors */
-:root {
-    --text-primary: black;
-    --a-primary: #4649AF;
-    --a-hover: #6290C3;
-    --secondary-bg: lightgray;
-    --primary-bg: white; 
-}
+/* THEMES */
 
 .theme-light {
     --text-primary: black;
     --a-primary: #4649AF;
     --a-hover: #6290C3;
     --secondary-bg: lightgray;
-    --primary-bg: white; 
+    --primary-bg: white;
+    --error: red; 
 }
 
 .theme-dark {
@@ -25,6 +19,7 @@
     --a-hover: #2D82B7;
     --secondary-bg: black;
     --primary-bg: #272727;
+    --error-color: red;
 }
 
 .theme-hulk {
@@ -33,7 +28,11 @@
     --a-hover: #7BAE7F;
     --secondary-bg: #4a306d;
     --primary-bg: #fceff9;
+    --error: red;
 }
+
+
+/* OVERRIDES AND DEFAULTS */
 
 body {
     color: var(--text-primary);
@@ -46,4 +45,15 @@ a {
 a:hover {
     color: var(--a-hover);
     cursor:pointer;
+}
+
+html [type='text']:focus, 
+html [type='email']:focus, 
+html textarea:focus {
+    --tw-ring-color: var(--a-primary);
+    border-color: var(--a-primary);
+}
+
+.errorlist {
+    color: var(--error-color)
 }

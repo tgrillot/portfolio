@@ -8,13 +8,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "text-primary":"var(--text-primary)",
         "a-primary":"var(--a-primary)",
         "a-hover":"var(--a-hover)",
         "secondary-bg":"var(--secondary-bg)",
         "primary-bg":"var(--primary-bg)",
+        "error-color":"var(--error-color)",
       },
       lineHeight: {
         "14":"3.5rem",
+      },
+      ringColor: {
+        "ring-blue-600":"var(--a-hover)"
       }
     },
   },

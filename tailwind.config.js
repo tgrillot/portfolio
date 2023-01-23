@@ -18,9 +18,6 @@ module.exports = {
       lineHeight: {
         "14":"3.5rem",
       },
-      ringColor: {
-        "ring-blue-600":"var(--a-hover)"
-      }
     },
   },
   plugins: [

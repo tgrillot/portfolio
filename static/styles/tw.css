@@ -1095,7 +1095,7 @@ select {
   --a-hover: #6290C3;
   --secondary-bg: lightgray;
   --primary-bg: white;
-  --error: red;
+  --error-color: red;
 }
 
 .theme-dark {
@@ -1113,10 +1113,10 @@ select {
   --a-hover: #7BAE7F;
   --secondary-bg: #4a306d;
   --primary-bg: #fceff9;
-  --error: red;
+  --error-color: red;
 }
 
-/* OVERRIDES AND DEFAULTS */
+/* DEFAULTS AND OVERRIDES */
 
 body {
   color: var(--text-primary);

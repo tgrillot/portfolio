@@ -1,6 +1,6 @@
 {% load static %}
 
-<nav class="font-sans flex flex-col text-center content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-secondary-bg shadow sm:items-baseline w-full">
+<nav class="flex flex-row text-center content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-secondary-bg shadow sm:items-baseline w-full">
     <div class="mb-2 sm:mb-0 inner">
       <a href="{% url 'home' %}" class="{% if request.get_full_path == "/" %}leading-14 text-4xl{% else %}text-2xl{% endif %} no-underline font-sans font-bold">TravisGrillot.dev</a><br>
       <span class="text-xs text-a-hover {% if request.get_full_path == "/" %}hidden{% endif %}">{{tagline}}</span>

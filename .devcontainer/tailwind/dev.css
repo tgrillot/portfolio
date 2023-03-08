@@ -31,8 +31,9 @@
     --error-color: red;
 }
 
+/* END THEMES */
 
-/* DEFAULTS AND OVERRIDES */
+/* CUSTOM DEFAULTS AND OVERRIDES */
 
 body {
     color: var(--text-primary);
@@ -57,3 +58,5 @@ html textarea:focus {
 .errorlist {
     color: var(--error-color)
 }
+
+/* END CUSTOM DEFAULTS AND OVERRIDES */

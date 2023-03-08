@@ -39,5 +39,5 @@ services:
   tailwind:
     container_name: tailwind_watcher
     <<: *portfolio
-    command: sh -c "sudo chmod -R 777 /code/.devcontainer/data/db && tailwindcss -i /code/static/styles/main.css -o /code/static/styles/tw.css -wp"
+    command: sh -c "sudo chmod -R 777 /code/.devcontainer/data/db && tailwindcss -c /code/.devcontainer/tailwind/tailwind.config.js -i /code/.devcontainer/tailwind/dev.css -o /code/static/styles/tw.css -wp"
     tty: true

@@ -52,13 +52,12 @@ def contact(request):
     context = {}
     form = ContactForm(request.POST or None)
     context['form'] = form
-    if request.method == "POST":
-        if request.POST:
-            if form.is_valid():
-                subject = form.cleaned_data["sender_name"] + ' : ' + form.cleaned_data["subject"]
-                message = form.cleaned_data["message"]
-                send_mail(subject,message,form.cleaned_data["from_email"],[ADMIN_EMAIL])
-                return redirect('sent')
+    if request.POST:
+        if form.is_valid():
+            subject = form.cleaned_data["sender_name"] + ' : ' + form.cleaned_data["subject"]
+            message = form.cleaned_data["message"]
+            send_mail(subject,message,form.cleaned_data["from_email"],[ADMIN_EMAIL])
+            return redirect('sent')
     return render(request, 'content/contact.html', context)
 
 def view_resume(request):

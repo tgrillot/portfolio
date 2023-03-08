@@ -12,5 +12,3 @@ urlpatterns = [
     path('', views.home, name='home'),
     
 ]
-
-handler404 = "portfolio.views.custom404"

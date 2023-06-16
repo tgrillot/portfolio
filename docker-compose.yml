@@ -1,3 +1,8 @@
+networks:
+  default:
+    name: webserver_internal
+    external: true
+
 services:
   db:
     container_name: portfolio-pg

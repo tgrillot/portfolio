@@ -1,6 +1,7 @@
 ### CUSTOM STUFF ###
 .devcontainer/data
 misc/
+data/
 
 ### TEMPLATE STUFF ###
 

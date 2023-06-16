@@ -4,4 +4,5 @@ ENV PYTHONUNBUFFERED=1
 ENV PIP_ROOT_USER_ACTION=ignore
 WORKDIR /code
 COPY . /code/
+RUN apt install python3-dotenv
 RUN python3.11 -m pip install -r requirements.txt

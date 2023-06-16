@@ -4,4 +4,4 @@ ENV PYTHONUNBUFFERED=1
 ENV PIP_ROOT_USER_ACTION=ignore
 WORKDIR /code
 COPY . /code/
-RUN sudo python3.11 -m pip install -r requirements.txt
+RUN pip install -r requirements.txt

@@ -14,9 +14,9 @@ services:
   web:
     container_name: portfolio
     build: .
-    command: /bin/sh -c "pip install -r requirements.txt && while sleep 1000; do :; done"
-    # volumes:
-    #   - .:/code
+    command: /bin/sh -c "python3.11 -m pip install -r requirements.txt && while sleep 1000; do :; done"
+    volumes:
+      - .:/code
     ports:
       - "18000:8000"
     environment:

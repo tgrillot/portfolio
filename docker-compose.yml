@@ -15,8 +15,8 @@ services:
     container_name: portfolio
     build: .
     command: /bin/sh -c "while sleep 1000; do :; done"
-    volumes:
-      - .:/code
+    # volumes:
+    #   - .:/code
     ports:
       - "18000:8000"
     environment:

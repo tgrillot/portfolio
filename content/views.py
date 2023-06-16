@@ -24,7 +24,16 @@ def projects(request):
 
 def viewSkill(request, slug):
     aSkill = skill.objects.get(slug=slug)
-    context = {'skill':aSkill}
+    projects = project.objects.all()
+    skillProjects = []
+    for proj in projects:
+        if aSkill in proj.skills.all():
+            skillProjects.append(proj)
+    print(skillProjects)
+    context = {
+        'skill':aSkill,
+        'projects':skillProjects
+        }
     return render(request, 'content/skill.html', context)
 
 def skills(request):

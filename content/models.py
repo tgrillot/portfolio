@@ -7,11 +7,6 @@ from django.core.exceptions import ValidationError
 from portfolio.settings import ALLOWED_FILE_UPLOAD_TYPES
 from django.dispatch import receiver
 
-
-
-# Create your models here.
-
-
 #### Portfolio Owner Model and utils #####
 
 # check if uploaded resume is a pdf
@@ -26,6 +21,12 @@ def set_resume_filename(instance, filename):
     format = instance.fname + '_' + instance.lname + '_Resume' + os.path.splitext(filename)[1]
     return os.path.join(path, format)
 
+# set the filename for the headshot
+def set_headshot_filename(instance,filename):
+    path = 'owner_headshot/'
+    format = instance.fname + '_' + instance.lname + '_Headshot' + os.path.splitext(filename)[1]
+    return os.path.join(path,format)
+
 # portfolio owner class declaration
 class portfolioOwner(models.Model):
     fname = models.CharField(max_length=50,blank=True)
@@ -35,6 +36,7 @@ class portfolioOwner(models.Model):
     linkedin = models.URLField(max_length=2048,blank=True)
     upwork = models.URLField(max_length=2048,blank=True)
     resume = models.FileField(upload_to=set_resume_filename,blank=True,validators=[validate_resume_filetype])
+    headshot = models.ImageField(upload_to=set_headshot_filename,blank=True)
     bio = models.TextField(blank=True)
     email = models.EmailField(blank=True)
     phone = PhoneNumberField(blank=True)
@@ -44,32 +46,57 @@ class portfolioOwner(models.Model):
     def fullname(self):
         return self.fname + ' ' + self.lname
 
-# delete resume file if portfolio owner is deleted
+# delete resume and headshot files if portfolio owner is deleted
 @receiver(models.signals.post_delete, sender=portfolioOwner)
 def delete_resume_on_delete_owner(sender, instance, **kwargs):
     if instance.resume:
         if os.path.isfile(instance.resume.path):
             os.remove(instance.resume.path)
+    if instance.headshot:
+        if os.path.isfile(instance.headshot.path):
+            os.remove(instance.headshot.path)
 
-# delete old resume file if new one is uploaded
+# delete old resume/headshot file if new one is uploaded
 @receiver(models.signals.pre_save, sender=portfolioOwner)
 def delete_resume_on_new_resume_upload(sender, instance, **kwargs):
     
+    resumechange = True
+    headshotchange = True
+
     if not instance.pk:
         return False
 
     try:
         old_resume = portfolioOwner.objects.get(pk=instance.pk).resume
     except Exception:
-        return False
+        resumechange = False
+
+    try:
+        old_headshot = portfolioOwner.objects.get(pk=instance.pk).headshot
+    except Exception:
+        headshotchange = False
+
+    if resumechange == True:
+        new_resume = instance.resume
     
-    new_resume = instance.resume
+    if headshotchange == True:
+        new_headshot = instance.headshot
 
     try:
         if not old_resume == new_resume:
             if os.path.isfile(old_resume.path):
                 os.remove(old_resume.path)
     except Exception:
+        resumechange = False
+
+    try:
+        if not old_headshot == new_headshot:
+            if os.path.isfile(old_headshot.path):
+                os.remove(old_headshot.path)
+    except Exception:
+        headshotchange = False
+
+    if resumechange == False and headshotchange == False:
         return False
 
 class portfolioOwnerAdmin(admin.ModelAdmin):
@@ -95,9 +122,9 @@ class skill(models.Model):
     EXP = (
         ('exp','Expert'),
         ('pro','Proficient'),
-        ('com', 'Competent'),
-        ('adv', 'Advanced Beginner'),
-        ('nov', 'Novice')
+        ('com','Competent'),
+        ('adv','Advanced Beginner'),
+        ('nov','Novice')
     )
     name = models.CharField(max_length=50,blank=False,null=False,unique=True)
     blurb = models.CharField(max_length=150,blank=False,null=False)
@@ -141,6 +168,7 @@ class education(models.Model):
     institution = models.CharField(max_length=50)
     award = models.CharField(max_length=50)
     major = models.CharField(max_length=50,blank=True)
+    gradyear = models.CharField(max_length=50,blank=True)
     concentration = models.CharField(max_length=50,blank=True)
     achievements = models.TextField(blank=True)
 

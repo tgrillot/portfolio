@@ -1,5 +1,7 @@
 {% extends 'main.html' %}
 
+{% block title %}Travis Grillot - Contact Me{% endblock %}
+
 {% block content %}
 
 <div class="items-center text-center pt-3 border-red-500">
@@ -11,7 +13,7 @@
           {% csrf_token %}
           {{ form }}
           <div class="form-actions">
-            <button type="submit" class="bg-a-primary hover:trasition-all ease-in-out duration-300 hover:scale-110 text-white font-bold py-2 px-4 rounded">Send</button>
+            <button type="submit" class="bg-a-primary hover:trasition-all ease-in-out duration-300 hover:scale-110 text-white font-bold py-2 px-4 rounded-sm">Send</button>
           </div>
       </form>
     {% else %}

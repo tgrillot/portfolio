@@ -12,6 +12,7 @@ module.exports = {
         "text-primary":"var(--text-primary)",
         "a-primary":"var(--a-primary)",
         "a-hover":"var(--a-hover)",
+        "tertiary-bg":"var(--tertiary-bg)",
         "secondary-bg":"var(--secondary-bg)",
         "primary-bg":"var(--primary-bg)",
         "error-color":"var(--error-color)",

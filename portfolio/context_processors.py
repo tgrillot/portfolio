@@ -10,6 +10,7 @@ def returnOwner(request):
             'github':owner.github,
             'linkedin':owner.linkedin,
             'upwork':owner.upwork,
+            'headshot':owner.headshot.url,
             }
     except Exception:
         context = {
@@ -19,5 +20,6 @@ def returnOwner(request):
             'github':'#',
             'linkedin':'#',
             'upwork':'#',
+            'headshot':'',
         }
     return context

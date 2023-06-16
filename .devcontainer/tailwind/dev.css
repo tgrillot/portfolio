@@ -6,6 +6,7 @@
 
 .theme-light {
     --text-primary: black;
+    --text-secondary: white;
     --a-primary: #4649AF;
     --a-hover: #6290C3;
     --secondary-bg: lightgray;
@@ -15,6 +16,7 @@
 
 .theme-dark {
     --text-primary: white;
+    --text-secondary: black;
     --a-primary: #4649AF;
     --a-hover: #2D82B7;
     --secondary-bg: black;
@@ -24,6 +26,7 @@
 
 .theme-hulk {
     --text-primary: black;
+    --text-secondary: white;
     --a-primary: #5B7F57;
     --a-hover: #7BAE7F;
     --secondary-bg: #4a306d;
@@ -59,4 +62,23 @@ html textarea:focus {
     color: var(--error-color)
 }
 
-/* END CUSTOM DEFAULTS AND OVERRIDES */
+/* HOME PAGE ANIMATION STUFF */
+
+#homeanim text {
+	text-transform: uppercase;
+	animation: stroke 5s;
+	stroke-width: 2;
+	stroke: var(--a-primary);
+    fill: var(--a-primary);
+	font-size: 4rem;
+}
+@keyframes stroke {
+	0%   {fill: rgba(72,138,20,0); stroke: var(--a-primary);
+		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
+	}
+	70%  {fill: rgba(72,138,20,0); stroke: var(--a-primary); }
+	80%  {fill: rgba(72,138,20,0); stroke: var(--a-primary); stroke-width: 3; }
+	100% {fill: var(--a-primary); stroke: rgba(54,95,160,0); 
+		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
+	}
+}

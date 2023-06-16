@@ -11,4 +11,4 @@ RUN apt-get update \
   && mv tailwindcss-linux-arm64 tailwindcss \
   && mv tailwindcss /usr/bin
 COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+RUN python3.11 -m pip install -r requirements.txt

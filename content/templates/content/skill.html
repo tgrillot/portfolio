@@ -1,11 +1,26 @@
 {% extends 'main.html' %}
 
+{% block title %}Travis Grillot - Skill: {{skill.name}}{% endblock %}
+
 {% block content %}
 
-<h1>{{skill.name}}</h1>
-<p>{{skill.blurb}}</p>
-<p>{{skill.explevel}}</p>
-<p>{{skill.longdesc}}</p>
+<h1 class="text-4xl font-bold w-full pb-2 mb-2 border-b-4 border-secondary-bg border-double">{{skill.name}}</h1>
+<div class="grid grid-cols-6 gap-2 mb-2">
+    <div class="bg-secondary-bg p-2 rounded-sm col-span-1 shadow-lg">
+        <p class="font-bold">Level: {{skill.get_explevel_display}}</p>
+        <p class="italic">{{skill.blurb}}</p>
+
+        <h3 class="text-xl w-full pb-2 mb-2 border-y-2 border-secondary-bg">Used In:</h3>
+        {% for project in projects %}
+            <p><a href="{% url 'project' project.slug %}">{{project.name}}</a></p>
+        {% endfor %}
+    </div>
+    <div class="col-span-5">
+        <p>{{skill.longdesc|safe}}</p>
+    </div>
+
+</div>
 
 
 {% endblock %}
+

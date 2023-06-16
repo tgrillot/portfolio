@@ -1,7 +1,12 @@
 {% load static %}
 
-<nav class="flex flex-row text-center content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-secondary-bg shadow sm:items-baseline w-full">
-    <div class="mb-2 sm:mb-0 inner">
+<nav class="flex flex-row text-center content-center sm:flex-row sm:text-left py-2 px-6 bg-secondary-bg shadow sm:items-baseline w-full">
+    {% if request.get_full_path != "/" %}
+      <div class="px-2 self-center">
+        <img src={{headshot}} width="50rem" height="50rem" class="rounded-full border-2 border-a-primary shadow-xl">
+      </div>
+    {% endif %}
+    <div class="mb-2 grow text-left">
       <a href="{% url 'home' %}" class="{% if request.get_full_path == "/" %}leading-14 text-4xl{% else %}text-2xl{% endif %} no-underline font-sans font-bold">TravisGrillot.dev</a><br>
       <span class="text-xs text-a-hover {% if request.get_full_path == "/" %}hidden{% endif %}">{{tagline}}</span>
     </div>

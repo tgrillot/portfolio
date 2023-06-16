@@ -1,8 +1,24 @@
 {% extends 'main.html' %}
 
+{% block title %}Travis Grillot - Development Portfolio{% endblock %}
+
 {% block content %}
 
-<h1>Home</h1>
+    <div class="flex flex-row">
+        <img src={{headshot}} width="200rm" height="200rm" class="rounded-full m-3 border-4 border-a-primary shadow-xl">
+        
+        <div class="grow">
+            <svg id="homeanim" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <text x="4rm" y="50%" text-anchor="start">
+                    Hi! My name is Travis Grillot!
+                </text>
+            </svg>
+            <p class="relative italic left-20 bottom-20 text-2xl text-a-primary">{{tagline}}</p>
+        </div>
 
+    </div>
 
 {% endblock %}
+
+<p>{{tagline}}</p>
+

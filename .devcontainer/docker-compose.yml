@@ -1,3 +1,8 @@
+networks:
+  default:
+    name: dev_env_bridge
+    external: true
+
 x-app: &portfolio
   build:
     context: ../
@@ -24,7 +29,7 @@ services:
     <<: *portfolio
     command: /bin/sh -c "while sleep 1000; do :; done"
     ports:
-      - "18000:8000"
+      - "8000:8000"
     depends_on:
       db:
         condition: service_healthy

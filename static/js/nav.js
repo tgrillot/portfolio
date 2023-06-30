@@ -1,12 +1,15 @@
-function theme() {
+function xdata() {
     return {
         colorThemes: {
             0: {id: 0, class:'theme-light', text:'Light'},
             1: {id: 1, class:'theme-dark', text:'Dark'},
             2: {id: 2, class:'theme-hulk', text:'Incredible Hulk'},
         },
+        min768: [],
+        showMenu: [],
+        showSocial: [],
         themeClass: [],
-        setTheme() {
+        init() {
             if (this.themeClass == "") {
                 if (!localStorage.getItem('themeClass')) {
                     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -18,9 +21,25 @@ function theme() {
                     this.themeClass = localStorage.getItem('themeClass');
                 }
             }
+            var x = window.matchMedia("(min-width:768px)")
+            if (x.matches) {
+                this.min768 = true;
+            } else {
+                this.min768 = false;
+            }
+            if (this.min768 == true) {
+                this.showMenu = true;
+                this.showSocial = true;
+            } else {
+                this.showMenu = false;
+                this.showSocial = false;
+            }
+            if (window.location.pathname.includes('contact')) {
+                this.showSocial = true
+            }
         },
         choiceClass(classID) {
-            const classes = {'rounded-sm':true, 'px-3':true, 'py-1':true};
+            const classes = {'rounded-sm':true, 'md:px-3':true, 'md:py-1':true};
             if (this.themeClass == this.colorThemes[Object.keys(this.colorThemes)[classID]].class) {
                 classes['text-a-hover'] = true;
             } else {
@@ -32,5 +51,11 @@ function theme() {
             this.themeClass = this.colorThemes[Object.keys(this.colorThemes)[classID]].class;
             localStorage.setItem('themeClass', this.colorThemes[Object.keys(this.colorThemes)[classID]].class);
         },
+        burgerClick() {
+            this.showMenu = !this.showMenu
+        },
+        balloonClick() {
+            this.showSocial = !this.showSocial
+        }
     }
 }

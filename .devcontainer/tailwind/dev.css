@@ -9,18 +9,22 @@
     --text-secondary: white;
     --a-primary: #4649AF;
     --a-hover: #6290C3;
-    --secondary-bg: lightgray;
+    --secondary-bg: #ACA9BB;
     --primary-bg: white;
+    --tertiary-bg:lightgray;
+    --social-bar:#6290C3;
     --error-color: red; 
 }
 
 .theme-dark {
     --text-primary: white;
     --text-secondary: black;
-    --a-primary: #4649AF;
+    --a-primary: #293ad7;
     --a-hover: #2D82B7;
     --secondary-bg: black;
-    --primary-bg: #272727;
+    --primary-bg: #202022;
+    --tertiary-bg:#262529;
+    --social-bar:#2D82B7;
     --error-color: red;
 }
 
@@ -31,6 +35,8 @@
     --a-hover: #7BAE7F;
     --secondary-bg: #4a306d;
     --primary-bg: #fceff9;
+    --tertiary-bg:#BEE6B9;
+    --social-bar:#7D5FA1;
     --error-color: red;
 }
 

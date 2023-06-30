@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 
-<html lang="en" x-data="theme()" :class="themeClass" x-init="setTheme()">
+<html lang="en" x-data="xdata()" :class="themeClass" x-init="init()">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
     <header>
         {% include 'navbar.html' %}
     </header>
-    <main class="flex-grow items-center w-3/4 m-auto">
+    <main class="flex-grow items-center w-full md:w-3/4 m-auto">
 
         {% if "/contact" not in request.get_full_path %}
             {% include 'social_bar.html' %}

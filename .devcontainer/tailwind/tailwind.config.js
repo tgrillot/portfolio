@@ -16,6 +16,7 @@ module.exports = {
         "secondary-bg":"var(--secondary-bg)",
         "primary-bg":"var(--primary-bg)",
         "error-color":"var(--error-color)",
+        "social-bar":"var(--social-bar)",
       },
       lineHeight: {
         "14":"3.5rem",

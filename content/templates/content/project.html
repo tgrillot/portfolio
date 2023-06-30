@@ -5,8 +5,8 @@
 {% block content %}
 
 <h1 class="text-4xl font-bold w-full pb-2 mb-2 border-b-4 border-secondary-bg border-double">{{project.name}}</h1>
-<div class="grid grid-cols-6 gap-2 mb-2">
-    <div class="bg-secondary-bg p-2 rounded-sm col-span-1 shadow-lg">
+<div class="md:grid md:grid-cols-6 gap-2 mb-2">
+    <div class="bg-tertiary-bg p-2 rounded-sm col-span-1 shadow-lg">
         <p class="italic">{{project.tagline}}</p>
         <p>{{project.startdate}} to {{project.enddate}}</p>
 
@@ -40,7 +40,7 @@
             {% endfor %}
         </div>
     </div>
-    <div class="col-span-5">
+    <div class="p-2 md:p-0 md:col-span-5">
         {{project.longdesc|safe}}
     </div>
 </div>

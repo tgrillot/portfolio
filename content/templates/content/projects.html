@@ -8,7 +8,7 @@
 
 <div>
     {% for project in projects %}
-            <div class="py-2 px-4 bg-secondary-bg text-left shadow-lg rounded-sm my-4 text-text-primary grid grid-cols-6 gap-10">
+            <div class="py-2 px-4 bg-tertiary-bg text-left shadow-lg rounded-sm my-4 text-text-primary md:grid md:grid-cols-6 md:gap-10">
                 <a href="{% url 'project' project.slug %}" class="col-span-2 group hover:transition-all ease-in-out duration-300 hover:translate-x-6">
                     <h3 class="group text-text-primary text-2xl font-semibold">{{project.name}}</h3>
                     <p class="group mt-2 italic">{{project.tagline}}</p>

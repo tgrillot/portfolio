@@ -1,21 +1,20 @@
-<div class="grid grid-cols-3 w-full h-40 bg-secondary-bg place-content-center">
-    <ul class="col-span-1 w-full text-center">
+<div class="grid grid-cols-3 w-full bg-secondary-bg place-content-center">
+    <ul class="col-span-3 md:col-span-1 w-full text-center my-3">
         <li><a href="{% url 'home' %}" class="text-md no-underline ml-2 px-1">Home</a></li>
         <li><a href="{% url 'about' %}" class="text-md no-underline ml-2 px-1">About Me</a></li> 
         <li><a href="{% url 'projects' %}" class="text-md no-underline ml-2 px-1">Projects</a></li>
         <li><a href="{% url 'skills' %}" class="text-md no-underline ml-2 px-1">Skills</a></li>
     </ul>
 
-    <div class="col-span-1 flex flex-col text-center gap-10 content-between">
+    <div class="col-span-3 md:col-span-1 my-3 md:flex flex-col text-center gap-10 content-between">
         {% if request.get_full_path != "/contact" %}
             <a href="{% url 'contact' %}" class="w-3/4 m-auto bg-a-primary p-2 font-semibold text-white text-lg space-x-2 rounded-sm drop-shadow-md w-full hover:transition-all ease-in-out duration-300 hover:scale-105 hover:text-white mb-2">
                 Contact me Today!
             </a>
         {% endif %}
-            <p class="text-sm grow">&copy; 2023 - Travis Grillot</p>
     </div>
 
-    <div class="col-span-1 flex justify-center m-1 flex-row gap-2 items-center">
+    <div class="col-span-1 hidden md:flex justify-center m-1 flex-row gap-2 items-center">
 
         <a href="{{linkedin}}" target="_blank" class="bg-a-primary p-2 font-semibold text-white text-lg align-middle inline-flex items-center space-x-2 rounded-sm drop-shadow-md hover:text-white hover:transition-all group ease-in-out duration-300 hover:scale-110">
             <span class="flex grow">
@@ -65,4 +64,8 @@
             </span>
         </a>
     </div>
+
+    <div class="col-span-3 w-full my-3">
+        <p class="text-sm grow self-center text-center">&copy; 2023 - Travis Grillot</p>
+    <div>
 </div>

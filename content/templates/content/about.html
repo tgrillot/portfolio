@@ -8,17 +8,16 @@
 	<div x-data="setup()">
 		<ul class="flex justify-left items-center my-4">
 			<template x-for="(tab, index) in tabs" :key="index">
-				<li class="cursor-pointer py-2 px-4 text-a-primary border-b-8"
-					:class="activeTab===index ? 'text-a-hover border-a-hover' : ''" @click="activeTab = index"
-					x-text="tab"></li>
+				<li class="cursor-pointer py-2 px-4 text-a-primary border-b-8" :class="activeTab===index ? 'text-a-hover border-a-hover' : ''" @click="activeTab = index" x-text="tab"></li>
 			</template>
 		</ul>
-		<div class="w-full p-4 text-center">
-			<div x-show="activeTab===0">{{bio|safe}}</div>
+		<div class="w-full text-justify md:text-center">
+			<div x-show="activeTab===0" class="p-4 bg-tertiary-bg">{{bio|safe}}</div>
 			<div x-show="activeTab===1">
 				{% for ed in edu %}
-					<div class="py-4 px-4 bg-secondary-bg text-left shadow-lg rounded-sm my-4">
+					<div class="p-4 bg-tertiary-bg text-left shadow-lg rounded-sm my-4">
 						<h3 class="text-text-primary text-2xl font-semibold">{{ed.award}}{% if ed.major %} in {{ed.major}}{% endif %}{% if ed.institution %} from {{ed.institution}}{% endif %}{% if ed.gradyear %} - {{ed.gradyear}}{% endif %}</h3>
+						<hr class="bg-secondary-bg">
 						{% if ed.concentration %}<p class="mt-2"><span class="font-bold">Concentration:</span> {{ed.concentration}}</p>{% endif %}
 						{% if ed.achievements %}<p class="mt-2"><span class="font-bold">Achievements:</span>{{ed.achievements|safe}}</p>{% endif %}
 					</div>
@@ -26,8 +25,9 @@
 			</div>
 			<div x-show="activeTab===2">
 				{% for wor in work %}
-					<div class="py-4 px-4 bg-secondary-bg text-left shadow-lg rounded-sm my-4">
+					<div class="py-4 px-4 bg-tertiary-bg text-left shadow-lg rounded-sm my-4">
 						<h3 class="text-text-primary text-2xl font-semibold">{{wor.position}} at {{wor.company}}</h3>
+						<hr class="bg-secondary-bg">
 						<p class="mt-2">{{wor.startdate}} to {{wor.enddate}}</p>
 						<p class="mt-2">{{wor.description|safe}}</p>
 					</div>

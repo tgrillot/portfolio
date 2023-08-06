@@ -5,20 +5,121 @@
 {% block content %}
 
     <div class="flex flex-row">
-        <img src={{headshot}} width="200rm" height="200rm" class="rounded-full m-3 border-4 border-a-primary shadow-xl">
+        <img src={{headshot}} class="hidden md:block w-56 h-56 rounded-full m-3 border-4 border-link drop-shadow-lg">
         
-        <div class="grow">
-            <svg id="homeanim" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="hidden md:block">
-                <text x="4rm" y="50%" text-anchor="start">
-                    Hi! My name is Travis Grillot!
-                </text>
-            </svg>
-            <p class="md:relative italic md:left-20 md:bottom-20 text-2xl text-a-primary">{{tagline}}</p>
+        <div class="flex flex-col grow">
+            <div class="md:h-1/4 lg:h-1/4 xl:h-1/3 2xl:h-1/2">
+                <svg id="homeanim" viewbox="0 -100 1000 200" xmlns="http://www.w3.org/2000/svg" class="hidden md:block overflow-visible">
+                    <text class="uppercase stroke-link fill-link text-link md:text-[90px] md:pt-24 lg:text-[110px] xl:text-[100px] 2xl:text-[80px]">
+                        Hi! I'm Travis Grillot!
+                    </text>
+                </svg>
+            </div>
+            <p class="md:hidden font-bold text-5xl text-link uppercase text-center mb-4">Hi! I'm Travis!</p>
+            <p class="hidden md:block grow italic text-2xl text-link">{{tagline}}</p>
+        </div>
+    </div>
+
+    <div class="md:flex md:flex-row-reverse">
+
+        <div class="w-full md:w-1/2 md:m-4">
+            <div class="leading-8 text-left ml-4 md:pb-20 md:text-3xl">
+                I am skilled in..
+            </div>
+            <div x-data='{
+                    timer:2000,
+                    skillindex: 0,
+                    skillcount: {{ skills.count }},
+                    getLastSkill() {
+                        if (this.skillindex == 0) {
+                            return document.getElementById(this.skillcount - 1);
+                        } else {
+                            return document.getElementById(this.skillindex - 1);
+                        }
+                    },
+                    rotateskill() {
+                        let activeskill = document.getElementById(this.skillindex);
+                        if (activeskill) {
+                            activeskill.setAttribute("x-show","true");
+                        }
+                        let inactiveskill = this.getLastSkill(this.skillcount);
+                        if (inactiveskill) {
+                            inactiveskill.setAttribute("x-show","false");
+                        }
+                        if (this.skillindex == this.skillcount - 1) {
+                            this.skillindex = 0;
+                        } else {
+                            this.skillindex += 1;
+                        }
+                    }
+                }' 
+                x-init="$interval(rotateskill, timer)"
+                class="relative">
+                {% for skill in skills %}
+                    <div id="{{ forloop.counter0 }}" x-show="false"
+                        x-transition:enter="transition-transform transition-opacity ease-in duration-300"
+                        x-transition:enter-start="opacity-0 transform -translate-x-4"
+                        x-transition:enter-end="opacity-100 transform translate-x-0"
+                        x-transition:leave="transition ease-out duration-1000"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0 transform translate-x-36 md:translate-x-96"
+                        class="absolute top-0 md:-top-16 left-10">
+                        <a href="{% url 'skill' skill.slug %}" class="md:text-3xl xl:text-5xl bg-link px-4 py-1 md:px-6 md:py-2 mx-2 rounded-full text-white leading-8 shadow-lg hover:text-white hover:transition-all ease-in-out duration-300 hover:scale-110">
+                            <nobr>{{skill.name}}</nobr>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="m-4 mt-8 md:mt-4 md:w-1/2">
+            {{bio|safe}}
         </div>
 
     </div>
 
+
+    <div>
+        <p class="text-3xl font-bold pl-4 pb-2">Featured Projects</p>
+        <div class="2xl:flex 2xl:flex-row 2xl:gap-4">
+        {% for project in projects %}
+            <div class="p-4 w-full mb-2 bg-bgcard shadow-lg flex flex-col-reverse md:flex-row-reverse 2xl:flex-col-reverse">
+                <div class="grid grid-cols-3 gap-4 items-center">
+                    {% if project.repo != "" %}
+                        <a href="{{project.repo}}" target="_blank" class="col-span-1 bg-link p-2 font-semibold text-white text-lg align-middle inline-flex items-center space-x-2 rounded-sm drop-shadow-md w-full group hover:text-white mb-2 hover:transition-all ease-in-out duration-300 hover:scale-110">
+                            <span class="flex grow group-hover ">
+                                {% if 'git.travisgrillot.dev' in project.repo %}
+                                    <svg class="w-5 h-5 fill-current group" role="img" viewbox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><switch><g><path d="M64 17.5c-.1-4.1-1.4-5-2.4-5.1-10.4.6-16.6.8-22 .9v12.2l-1.6-.9V13.3c-5.8 0-10.8-.3-19.9-.8l-1.8-.1c-.5 0-1.2-.1-1.9-.1-.9-.1-2-.1-3.1-.2-3.1 0-6.1 1.3-8.2 3.4-2.2 2.2-3.2 5.4-3.1 9 .2 6 2.8 10.3 7.5 12.8 2.8 1.5 6.4 2.3 10.6 2.5.8 2.8 6.5 11.4 10.9 11.9h19c2.3-.2 6.9-2.2 11.5-13.6 2.8-6.8 4.6-15.3 4.5-20.6zM16.3 34.3c-5.3-.7-10.1-2.5-11-9.5-.3-2.1.2-4 1.4-5.3 1.2-1.3 3.1-2 5.6-2h.2c.6 6.9 1.7 11 3.8 16.8zm30.5-4.5c1.4.7 2 2.4 1.3 3.7l-5.3 10.9c-.7 1.4-2.4 2-3.7 1.3l-10.9-5.3c-1.4-.7-2-2.4-1.3-3.7l5.3-10.9c.7-1.4 2.4-2 3.7-1.3l2 1-1.4 2.9c-.2 0-.4 0-.6.1-.9.3-1.4 1.4-1.1 2.3.1.2.2.4.3.5l-2.4 5c-.2 0-.4 0-.6.1-.9.3-1.4 1.4-1.1 2.3.3.9 1.4 1.4 2.3 1.1.9-.3 1.4-1.4 1.1-2.3-.1-.3-.2-.5-.4-.7l2.4-4.9c.3 0 .5 0 .8-.1l.6-.3c.1 0 .2.1.3.1 1.8.9 2.9 1.4 3.1 2 .3.8-.5 2.4-2 5.4v.1c-.2 0-.4 0-.7.1-.9.3-1.4 1.4-1.1 2.3.3.9 1.4 1.4 2.3 1.1.9-.3 1.4-1.4 1.1-2.3-.1-.2-.2-.4-.4-.6v-.1c1.8-3.6 2.5-5.2 2.1-6.5-.4-1.1-1.6-1.7-3.8-2.8-.1 0-.2-.1-.3-.1 0-.2 0-.5-.1-.7-.1-.2-.2-.4-.4-.6L39 26l7.8 3.8z"/></g></switch></svg>
+                                {% elif 'github.com' in project.repo %}
+                                    <svg class="w-5 h-5 fill-current group" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" /></svg>
+                                {% endif %}
+                                <span class="grow text-center leading-none mx-2 h-5 block">Repo</span>
+                            </span>                           
+                        </a>
+                    {% endif %}
+            
+                    {% if project.live != "" %}
+                        <a href="{{project.live}}" target="_blank" class="col-span-1 bg-link p-2 font-semibold text-white text-lg align-middle inline-flex items-center space-x-2 rounded-sm drop-shadow-md w-full group hover:text-white mb-2 hover:transition-all ease-in-out duration-300 hover:scale-110">
+                            <span class="flex grow group-hover">
+                                <svg class="w-5 h-5 fill-current" viewBox="25 20 40 50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" enable-background="new 0 0 76.00 76.00" xml:space="preserve"><path stroke-width="0.2" stroke-linejoin="round" d="M 30.0833,20.5833L 50.6665,36.021L 50.6665,37.2084L 30.0833,52.25L 30.0833,20.5833 Z M 26.9166,57L 28.5,57L 28.5,63.3333L 31.6666,63.3333L 31.6666,64.9167L 28.5,64.9167L 26.9166,64.9167L 26.9166,57 Z M 33.25,64.9167L 33.25,57L 34.8333,57L 34.8333,64.9167L 33.25,64.9167 Z M 36.8124,57L 38.7916,57L 40.375,62.2779L 41.9583,57L 43.9375,57L 41.1666,64.9167L 39.5833,64.9167L 36.8124,57 Z M 45.9166,57L 47.5,57L 50.6666,57L 50.6666,58.5833L 47.5,58.5833L 47.5,60.1667L 50.6667,60.1667L 50.6667,61.75L 47.5,61.75L 47.5,63.3333L 50.6667,63.3333L 50.6667,64.9167L 47.5,64.9167L 45.9166,64.9167L 45.9166,57 Z "/></svg>
+                                <span class="grow text-center leading-none h-5 mx-2 block">Live</span>
+                            </span>
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="grow pl-2">
+                    <a href="{% url 'project' project.slug %}" class="text-xl font-bold">{{project.name}}</a>
+                    <p class="italic mb-2">{{project.tagline}}</p>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
 {% endblock %}
 
-<p>{{tagline}}</p>
+rotating skills banner
 
+about me 
+
+project showcase

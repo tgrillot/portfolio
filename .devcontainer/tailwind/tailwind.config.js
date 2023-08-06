@@ -9,14 +9,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "text-primary":"var(--text-primary)",
-        "a-primary":"var(--a-primary)",
-        "a-hover":"var(--a-hover)",
-        "tertiary-bg":"var(--tertiary-bg)",
-        "secondary-bg":"var(--secondary-bg)",
-        "primary-bg":"var(--primary-bg)",
+        "deftext":"var(--deftext)",
+        "link":"var(--link)",
+        "linkhov":"var(--linkhov)",
+        "bgheadfoot":"var(--bgheadfoot)",
+        "bgbody":"var(--bgbody)",
+        "bgcard":"var(--bgcard)",
         "error-color":"var(--error-color)",
-        "social-bar":"var(--social-bar)",
+        "actionbutton":"var(--actionbutton)",
+        "bgcardhead":"var(--bgcardhead)",
+        "headerfooterlink":"var(--headerfooterlink)",
+        "headerfooterlinkhov":"var(--headerfooterlinkhov)",
       },
       lineHeight: {
         "14":"3.5rem",

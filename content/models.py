@@ -3,6 +3,7 @@ from django.contrib import admin
 from phonenumber_field.modelfields import PhoneNumberField
 from tinymce.widgets import TinyMCE
 import os
+from django.forms.widgets import Textarea
 from django.core.exceptions import ValidationError
 from portfolio.settings import ALLOWED_FILE_UPLOAD_TYPES
 from django.dispatch import receiver
@@ -40,11 +41,26 @@ class portfolioOwner(models.Model):
     bio = models.TextField(blank=True)
     email = models.EmailField(blank=True)
     phone = PhoneNumberField(blank=True)
-    tagline = models.CharField(max_length=300,blank=True)
+    tagline = models.TextField(blank=True)
 
     @property
     def fullname(self):
         return self.fname + ' ' + self.lname
+
+class portfolioOwnerAdmin(admin.ModelAdmin):
+    list_display = ['fullname','email','phone']
+    formfield_overrides = {
+        models.TextField: {'widget': TinyMCE}
+    }
+
+    # allow only one portfolio owner
+    def has_add_permission(self, request):
+        base_add_permission = super(portfolioOwnerAdmin, self).has_add_permission(request)
+        if base_add_permission:
+            count = portfolioOwner.objects.all().count()
+            if count == 0:
+                return True
+        return False
 
 # delete resume and headshot files if portfolio owner is deleted
 @receiver(models.signals.post_delete, sender=portfolioOwner)
@@ -98,22 +114,6 @@ def delete_resume_on_new_resume_upload(sender, instance, **kwargs):
 
     if resumechange == False and headshotchange == False:
         return False
-
-class portfolioOwnerAdmin(admin.ModelAdmin):
-    list_display = ['fullname','email','phone']
-    formfield_overrides = {
-        models.TextField: {'widget': TinyMCE}
-    }
-
-    # allow only one portfolio owner
-    def has_add_permission(self, request):
-        base_add_permission = super(portfolioOwnerAdmin, self).has_add_permission(request)
-        if base_add_permission:
-            count = portfolioOwner.objects.all().count()
-            if count == 0:
-                return True
-        return False
-
 
 
 ##### Other Models #####

@@ -41,21 +41,21 @@ def skills(request):
     context = {'skills':skills}
     return render(request, 'content/skills.html', context)
 
-def about(request):
-    try:
-        owner = portfolioOwner.objects.all()[0]
-        bio = owner.bio
-    except Exception:
-        bio = 'No portfolio owner configured.'
+# def about(request):
+#     try:
+#         owner = portfolioOwner.objects.all()[0]
+#         bio = owner.bio
+#     except Exception:
+#         bio = 'No portfolio owner configured.'
 
-    edu = education.objects.all()
-    wrk = work.objects.all()
-    context = {
-        'bio':bio,
-        'edu':edu,
-        'work':wrk,
-        }
-    return render(request, 'content/about.html', context)
+#     edu = education.objects.all()
+#     wrk = work.objects.all()
+#     context = {
+#         'bio':bio,
+#         'edu':edu,
+#         'work':wrk,
+#         }
+#     return render(request, 'content/about.html', context)
 
 def contact(request):
     context = {}

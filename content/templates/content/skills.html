@@ -4,16 +4,16 @@
 
 {% block content %}
 
-<h1 class="text-4xl">My Skills</h1>
+<h1 class="text-4xl ml-4 my-6 font-bold">Some of My Skills</h1>
 
 <div class="md:grid md:grid-cols-4">
     {% for skill in skills %}
-        <a href="{% url 'skill' skill.slug %}" class="col-span-1 md:mx-2">
-            <div class="py-2 px-4 bg-tertiary-bg text-left shadow-lg rounded-sm my-4 text-text-primary hover:text-text-primary hover:transition-all ease-in-out duration-300 hover:scale-105">
+        <a href="{% url 'skill' skill.slug %}" class="col-span-1 md:mx-2 mb-4">
+            <div class="bg-bgcard pb-2 text-left shadow-lg rounded-sm text-deftext hover:text-deftext hover:transition-all ease-in-out duration-300 hover:scale-105">
                 <div>
-                    <h3 class="text-text-primary text-2xl font-semibold">{{skill.name}}</h3>
-                    <p class="mt-2 italic">{{skill.blurb}}</p>
-                    <p class="mt-2">{{skill.get_explevel_display}}</p>
+                    <h3 class="pl-4 py-2 text-deftext text-2xl bg-bgcardhead shadow-sm font-bold">{{skill.name}}</h3>
+                    <p class="mt-2 ml-4 italic">{{skill.blurb}}</p>
+                    <p class="mt-2 ml-4">{{skill.get_explevel_display}}</p>
                 </div>
             </div>
         </a>

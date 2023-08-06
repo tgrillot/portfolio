@@ -5,63 +5,92 @@
 /* THEMES */
 
 .theme-light {
-    --text-primary: black;
-    --text-secondary: white;
-    --a-primary: #4649AF;
-    --a-hover: #6290C3;
-    --secondary-bg: #ACA9BB;
-    --primary-bg: white;
-    --tertiary-bg:lightgray;
-    --social-bar:#6290C3;
-    --error-color: red; 
+	--bgbody: #f2f2f2;
+	--bgheadfoot: #e0e0e0;
+	--bgcard: #ffffff;
+	--bgcardhead: #e0e0e0; /* Adjusted to match the bgbody color */
+	--deftext: #333333;
+	--link: #1565c0;
+	--linkhov: #0d47a1;
+	--actionbutton: #1e88e5;
+	--headerfooterlink: #1e88e5;
+	--headerfooterlinkhov: #0d47a1;
+	--error-color: red;
 }
 
 .theme-dark {
-    --text-primary: white;
-    --text-secondary: black;
-    --a-primary: #293ad7;
-    --a-hover: #2D82B7;
-    --secondary-bg: black;
-    --primary-bg: #202022;
-    --tertiary-bg:#262529;
-    --social-bar:#2D82B7;
-    --error-color: red;
+	--bgbody: #292929;
+	--bgheadfoot: #1a1a1a;
+	--bgcard: #333333;
+	--bgcardhead: #1a1a1a; /* Adjusted to match the bgbody color */
+	--deftext: #ffffff;
+	--link: #9c27b0;
+	--linkhov: #7b1fa2;
+	--actionbutton: #e040fb;
+	--headerfooterlink: #bb86fc;
+	--headerfooterlinkhov: #6200ea;
+	--error-color: red;
 }
 
-.theme-hulk {
-    --text-primary: black;
-    --text-secondary: white;
-    --a-primary: #5B7F57;
-    --a-hover: #7BAE7F;
-    --secondary-bg: #4a306d;
-    --primary-bg: #fceff9;
-    --tertiary-bg:#BEE6B9;
-    --social-bar:#7D5FA1;
-    --error-color: red;
+.theme-incredible {
+	--bgbody: #e4f9e3; /* Very light green for body background */
+	--bgheadfoot: #6a1b9a; /* Darker purple for header and footer background */
+	--bgcard: #ffffff;
+	--bgcardhead: #81c784; /* Complementary shade of green to bgbody */
+	--deftext: #333333;
+	--link: #4caf50; /* Green for links */
+	--linkhov: #388e3c; /* Darker green for link hover */
+	--actionbutton: #64dd17;
+	--headerfooterlink: #81c784;
+	--headerfooterlinkhov: #519657;
+	--error-color: red;
+}
+
+.theme-sunny {
+	--bgbody: #ffffff;
+	--bgheadfoot: #ffd966;
+	--bgcard: #ffeb99;
+	--bgcardhead: #fff9c4;
+	--deftext: #333333;
+	--link: #2196f3;
+	--linkhov: #1976d2;
+	--actionbutton: #ff5722;
+	--headerfooterlink: #0288d1;
+	--headerfooterlinkhov: #01579b;
+	--error-color: red;
+}
+
+.theme-minty {
+	--bgbody: #d3f6f5;
+	--bgheadfoot: #80cbc4;
+	--bgcard: #ffffff;
+	--bgcardhead: #80deea;
+	--deftext: #333333;
+	--link: #009688;
+	--linkhov: #00796b;
+	--actionbutton: #4db6ac;
+	--headerfooterlink: #00796b;
+	--headerfooterlinkhov: #004c40;
+	--error-color: red;
 }
 
 /* END THEMES */
 
 /* CUSTOM DEFAULTS AND OVERRIDES */
 
-body {
-    color: var(--text-primary);
-    background-color: var(--primary-bg);
-}
-
 a {
-    color: var(--a-primary);
+    color: var(--link);
 }
 a:hover {
-    color: var(--a-hover);
+    color: var(--linkhov);
     cursor:pointer;
 }
 
 html [type='text']:focus, 
 html [type='email']:focus, 
 html textarea:focus {
-    --tw-ring-color: var(--a-primary);
-    border-color: var(--a-primary);
+    --tw-ring-color: var(--link);
+    border-color: var(--linkhov);
 }
 
 .errorlist {
@@ -71,20 +100,30 @@ html textarea:focus {
 /* HOME PAGE ANIMATION STUFF */
 
 #homeanim text {
-	text-transform: uppercase;
 	animation: stroke 5s;
-	stroke-width: 2;
-	stroke: var(--a-primary);
-    fill: var(--a-primary);
-	font-size: 4rem;
 }
 @keyframes stroke {
-	0%   {fill: rgba(72,138,20,0); stroke: var(--a-primary);
-		stroke-dashoffset: 25%; stroke-dasharray: 0 50%; stroke-width: 2;
-	}
-	70%  {fill: rgba(72,138,20,0); stroke: var(--a-primary); }
-	80%  {fill: rgba(72,138,20,0); stroke: var(--a-primary); stroke-width: 3; }
-	100% {fill: var(--a-primary); stroke: rgba(54,95,160,0); 
-		stroke-dashoffset: -25%; stroke-dasharray: 50% 0; stroke-width: 0;
-	}
+	0%  {
+            fill: rgba(72,138,20,0); 
+            stroke: var(--link);
+            stroke-dashoffset: 25%; 
+            stroke-dasharray: 0 50%; 
+            stroke-width: 1;
+	    }
+	70% {
+            fill: rgba(72,138,20,0); 
+            stroke: var(--link); 
+        }
+	80% {
+            fill: rgba(72,138,20,0); 
+            stroke: var(--link); 
+            stroke-width: 1; 
+        }
+	100%{
+            fill: var(--link); 
+            stroke: rgba(54,95,160,0); 
+		    stroke-dashoffset: -25%; 
+            stroke-dasharray: 50% 0; 
+            stroke-width: 1;
+	    }
 }

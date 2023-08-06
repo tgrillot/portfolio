@@ -4,18 +4,18 @@
 
 {% block content %}
 
-<h1 class="text-4xl font-bold w-full pb-2 mb-2 border-b-4 border-secondary-bg border-double">{{skill.name}}</h1>
-<div class="md:grid md:grid-cols-6 md:gap-2 md:mb-2">
-    <div class="bg-tertiary-bg p-2 rounded-sm col-span-1 shadow-lg">
+<h1 class="text-4xl font-bold w-full pb-2 pl-4 my-6 xl:border-b-4 border-bgheadfoot border-double">{{skill.name}}</h1>
+<div class="xl:grid xl:grid-cols-6 xl:gap-2 xl:mb-2">
+    <div class="bg-bgcard p-2 pl-4 rounded-sm col-span-1 shadow-lg">
         <p class="font-bold">Level: {{skill.get_explevel_display}}</p>
         <p class="italic">{{skill.blurb}}</p>
 
-        <h3 class="md:text-xl w-full pb-2 md:mb-2 md:border-y-2 md:border-secondary-bg">Used In:</h3>
+        <h3 class="md:text-xl w-full pb-2 md:mb-2">Used In:</h3>
         {% for project in projects %}
             <p><a href="{% url 'project' project.slug %}">{{project.name}}</a></p>
         {% endfor %}
     </div>
-    <div class="p-2 md:p-0 md:col-span-5">
+    <div class="p-2 ml-2 md:p-0 md:col-span-5">
         <p>{{skill.longdesc|safe}}</p>
     </div>
 

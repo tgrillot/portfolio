@@ -3,7 +3,9 @@ function xdata() {
         colorThemes: {
             0: {id: 0, class:'theme-light', text:'Light'},
             1: {id: 1, class:'theme-dark', text:'Dark'},
-            2: {id: 2, class:'theme-hulk', text:'Incredible Hulk'},
+            2: {id: 2, class:'theme-incredible', text:'Incredible'},
+            3: {id: 3, class:'theme-sunny', text:'Sunny'},
+            4: {id: 4, class:'theme-minty', text:"Minty"},
         },
         min768: [],
         showMenu: [],
@@ -39,7 +41,7 @@ function xdata() {
             }
         },
         choiceClass(classID) {
-            const classes = {'rounded-sm':true, 'md:px-3':true, 'md:py-1':true};
+            const classes = {'rounded-sm':true, 'md:px-3':true, 'md:py-1':true, 'text-headerfooterlink':true, 'hover:text-headerfooterlinkhov':true,};
             if (this.themeClass == this.colorThemes[Object.keys(this.colorThemes)[classID]].class) {
                 classes['text-a-hover'] = true;
             } else {

@@ -48,5 +48,9 @@
     </div>
   </div>
 
-  <script src="{% static 'js/nav.js' %}"></script>
+  {% if debug %}
+    <script src="{% static 'js/nav.js' %}"></script>
+  {% else %}
+    <script src="{% static 'js/nav.min.js' %}"></script>
+  {% endif %}
 </nav> 

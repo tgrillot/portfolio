@@ -30,7 +30,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','192.168.88.187','192.168.27.127']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','192.168.88.187','192.168.27.127','travisgrillot.dev']
+
+INTERNAL_IPS = (
+    '127.0.0.1',
+    '192.168.27.127',
+)
 
 
 # Application definition
@@ -62,6 +67,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
@@ -180,3 +187,4 @@ RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY')
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+

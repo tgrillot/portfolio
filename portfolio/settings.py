@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1','192.168.88.187','192.168.27.127']
 INTERNAL_IPS = (
     '127.0.0.1',
     '192.168.27.127',
+    'travisgrillot.dev',
 )
 
 

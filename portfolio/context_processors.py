@@ -18,6 +18,8 @@ def returnOwner(request):
             'linkedin':owner.linkedin,
             'upwork':owner.upwork,
             'headshot':owner.headshot.url,
+            'headline':owner.headline,
+            'sitename':owner.sitename,
             }
     except Exception:
         context = {
@@ -29,5 +31,7 @@ def returnOwner(request):
             'linkedin':'#',
             'upwork':'#',
             'headshot':'',
+            'headline':'No portfolio owner configured.',
+            'sitename':'No portfolio owner configured.'
         }
     return context

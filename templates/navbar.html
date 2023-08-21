@@ -9,7 +9,7 @@
       <img src={{headshot}} width="50rem" height="50rem" class="rounded-full border-2 border-headerfooterlink shadow-xl">
     </div>
     {% comment %} Title/subtitle {% endcomment %}
-    <a href="{% url 'home' %}" class="text-2xl text-headerfooterlink hover:text-headerfooterlinkhov {% if request.get_full_path == "/" %}md:leading-14 md:text-4xl{% else %}md:text-2xl{% endif %} no-underline font-sans font-bold">TravisGrillot.dev</a><br>
+    <a href="{% url 'home' %}" class="text-2xl text-headerfooterlink hover:text-headerfooterlinkhov {% if request.get_full_path == "/" %}md:leading-14 md:text-4xl{% else %}md:text-2xl{% endif %} no-underline font-sans font-bold">{{sitename}}</a><br>
     <span class="text-xs text-headerfooterlink {% if request.get_full_path == "/" %}md:hidden{% endif %}">{{tagline|safe}}</span>
   </div>
 
@@ -48,5 +48,9 @@
     </div>
   </div>
 
-  <script src="{% static 'js/nav.js' %}"></script>
+  {% if debug %}
+    <script src="{% static 'js/nav.js' %}"></script>
+  {% else %}
+    <script src="{% static 'js/nav.min.js' %}"></script>
+  {% endif %}
 </nav> 

@@ -32,6 +32,7 @@ def set_headshot_filename(instance,filename):
 class portfolioOwner(models.Model):
     fname = models.CharField(max_length=50,blank=True)
     lname = models.CharField(max_length=50,blank=True)
+    sitename = models.CharField(max_length=50,blank=True)
     github = models.URLField(max_length=2048,blank=True)
     gitea = models.URLField(max_length=2048,blank=True)
     linkedin = models.URLField(max_length=2048,blank=True)
@@ -42,6 +43,7 @@ class portfolioOwner(models.Model):
     email = models.EmailField(blank=True)
     phone = PhoneNumberField(blank=True)
     tagline = models.TextField(blank=True)
+    headline = models.CharField(max_length=100,blank=True)
 
     @property
     def fullname(self):

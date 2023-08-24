@@ -9,7 +9,7 @@
     <div class="bg-bgcard p-2 pl-4 rounded-sm shadow-lg">
         <p class="font-bold">Level: {{skill.get_explevel_display}}</p>
         <p class="italic">{{skill.blurb}}</p>
-        {{projects.count}}
+        {{projects|len}}
         {% if projects.count > 0 %}
             <h3 class="md:text-xl w-full pb-1 pt-2 md:mb-2 font-bold">Used In:</h3>
             {% for project in projects %}

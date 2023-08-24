@@ -5,8 +5,8 @@
 {% block content %}
 
 <h1 class="text-4xl font-bold w-full pb-2 pl-4 my-6 xl:border-b-4 border-bgheadfoot border-double">{{skill.name}}</h1>
-<div class="xl:grid xl:grid-cols-6 xl:gap-2 xl:mb-2">
-    <div class="bg-bgcard p-2 pl-4 rounded-sm col-span-6 shadow-lg">
+<div class="xl:mb-2">
+    <div class="bg-bgcard p-2 pl-4 rounded-sm shadow-lg">
         <p class="font-bold">Level: {{skill.get_explevel_display}}</p>
         <p class="italic">{{skill.blurb}}</p>
 

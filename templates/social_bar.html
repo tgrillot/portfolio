@@ -55,7 +55,7 @@
     </div>
 
     {% comment %} Floating action button {% endcomment %}
-    <button @click="balloonClick()" class="w-16 h-16 p-3 rounded-full bg-actionbutton text-white md:hidden shadow-xl {% if "/contact" in request.get_full_path %}hidden{% endif %}">
+    <button @click="balloonClick()" class="w-16 h-16 p-3 rounded-full bg-actionbutton p-2 text-white md:hidden shadow-xl {% if "/contact" in request.get_full_path %}hidden{% endif %}">
         <svg class="fill-current" viewBox="0 0 60 60" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
             <g>
                 <path d="M59.888,47.514l-3.839-11.518c2.056-3.615,3.14-7.716,3.14-11.893c0-13.286-10.809-24.095-24.095-24.095 c-8.242,0-15.824,4.223-20.219,11.007c3.089-1.291,6.477-2.007,10.029-2.007C39.294,9.01,51,20.716,51,35.104 c0,3.996-0.905,7.783-2.518,11.172l10.263,2.701c0.085,0.022,0.17,0.033,0.255,0.033c0.006,0,0.014-0.001,0.02,0 c0.553,0,1-0.448,1-1C60.019,47.829,59.972,47.66,59.888,47.514z"/>

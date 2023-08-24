@@ -10,10 +10,14 @@
         <p class="font-bold">Level: {{skill.get_explevel_display}}</p>
         <p class="italic">{{skill.blurb}}</p>
 
-        <h3 class="md:text-xl w-full pb-2 md:mb-2">Used In:</h3>
-        {% for project in projects %}
-            <p><a href="{% url 'project' project.slug %}">{{project.name}}</a></p>
-        {% endfor %}
+        {% if projects.count > 0 %}
+            <h3 class="md:text-xl w-full pb-1 pt-2 md:mb-2 font-bold">Used In:</h3>
+            {% for project in projects %}
+                <p><a href="{% url 'project' project.slug %}">{{project.name}}</a></p>
+            {% endfor %}
+        {% endif %}
+
+
     </div>
     {% comment %}
     <div class="p-2 ml-2 md:p-0 md:col-span-5">

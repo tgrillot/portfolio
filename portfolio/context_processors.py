@@ -11,6 +11,7 @@ def returnOwner(request):
         tagline = taglines[random.randrange(len(taglines))]
         context = {
             'name':owner.fullname,
+            'fname':owner.fname,
             'tagline':tagline,
             'taglines':taglines,
             'gitea':owner.gitea,
@@ -24,6 +25,7 @@ def returnOwner(request):
     except Exception:
         context = {
             'name':'No portfolio owner configured.',
+            'fname':'No portfolio owner configured.',
             'tagline':'No portfolio owner configured.',
             'taglines':'No portfolio owner configured.',
             'gitea':'#',

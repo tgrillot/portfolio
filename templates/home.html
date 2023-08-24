@@ -24,7 +24,7 @@
     <div class="md:flex md:flex-row-reverse">
 
         <div class="w-full md:w-1/2 md:m-4">
-            <div class="leading-8 text-left ml-4 md:pb-20 md:text-3xl">
+            <div class="leading-8 text-left ml-4 md:mb-2 md:pb-20 md:text-3xl">
                 I am skilled in..
             </div>
             <div x-data='rotato({{ skills.count }})'x-init="$interval(rotateskill, timer)" class="relative">
@@ -54,7 +54,7 @@
 
     <div>
         <p class="text-3xl font-bold pl-4 pb-2">Featured Projects</p>
-        <div class="2xl:flex 2xl:flex-row 2xl:gap-4">
+        <div class="2xl:flex 2xl:flex-row 2xl:gap-4 mb-4">
         {% for project in projects %}
             <div class="p-4 w-full mb-2 bg-bgcard shadow-lg flex flex-col-reverse md:flex-row-reverse 2xl:flex-col-reverse">
                 <div class="grid grid-cols-3 gap-4 items-center">

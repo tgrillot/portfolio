@@ -3,6 +3,10 @@ from django.http import FileResponse, Http404
 from portfolio.settings import MEDIA_URL, ADMIN_EMAIL
 from content.forms import ContactForm
 from django.core.mail import send_mail
+from rest_framework import viewsets
+from rest_framework import permissions
+from .serializers import *
+
 
 from .models import *
 
@@ -79,3 +83,18 @@ def view_resume(request):
         return FileResponse(open(path, 'rb'), content_type='application/pdf')
     except FileNotFoundError:
         raise Http404()
+
+class OwnerViewSet(viewsets.ModelViewSet):
+    queryset = portfolioOwner.objects.all()
+    serializer_class = OwnerSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class SkillViewSet(viewsets.ModelViewSet):
+    queryset = skill.objects.all()
+    serializer_class = SkillSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ProjectViewSet(viewsets.ModelViewSet):
+    queryset = project.objects.all()
+    serializer_class = ProjectSerializer
+    permission_classes = [permissions.IsAuthenticated]

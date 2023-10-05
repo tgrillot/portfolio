@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'tinymce',
     'captcha',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -188,3 +189,10 @@ RECAPTCHA_SECRET_KEY = os.environ.get('RECAPTCHA_SECRET_KEY')
 
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
+# django rest settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

@@ -9,19 +9,19 @@ services:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
-    env_file: .env
+    env_file: ./backend/.env
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
       retries: 5
       
-  web:
-    container_name: portfolio
-    build: .
+  backend:
+    container_name: portfolio-backend
+    build: ./backend
     command: /bin/sh -c "python3.11 -m pip install -r requirements.txt && python manage.py runserver 0.0.0.0:18000"
     volumes:
-      - .:/code
+      - ./backend:/code
     ports:
       - "18000:18000"
     environment:
@@ -31,3 +31,15 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  frontend:
+    container_name: portfolio-frontend
+    build: ./frontend
+    command: /bin/sh -c "npm install && npm run dev"
+    volumes:
+      - ./frontend:/code
+    ports:
+      - "28000:28000"
+    depends_on:
+      backend:
+        condition: service_started

@@ -8,6 +8,7 @@ from django.core.exceptions import ValidationError
 from portfolio.settings import ALLOWED_FILE_UPLOAD_TYPES
 from django.dispatch import receiver
 
+
 #### Portfolio Owner Model and utils #####
 
 # check if uploaded resume is a pdf
@@ -42,7 +43,7 @@ class portfolioOwner(models.Model):
     bio = models.TextField(blank=True)
     email = models.EmailField(blank=True)
     phone = PhoneNumberField(blank=True)
-    tagline = models.TextField(blank=True)
+    taglines = models.JSONField(default=list, blank=True, null=True)
     headline = models.CharField(max_length=100,blank=True)
 
     @property
@@ -51,9 +52,6 @@ class portfolioOwner(models.Model):
 
 class portfolioOwnerAdmin(admin.ModelAdmin):
     list_display = ['fullname','email','phone']
-    formfield_overrides = {
-        models.TextField: {'widget': TinyMCE}
-    }
 
     # allow only one portfolio owner
     def has_add_permission(self, request):

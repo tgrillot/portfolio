@@ -28,9 +28,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = os.environ.get('DEBUG')
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','192.168.88.187','192.168.27.127','travisgrillot.dev']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','192.168.88.187','192.168.27.127','travisgrillot.dev','portfolio-backend']
 
 INTERNAL_IPS = (
     '127.0.0.1',
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
     'tinymce',
     'captcha',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +72,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'htmlmin.middleware.HtmlMinifyMiddleware',
     'htmlmin.middleware.MarkRequestMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
@@ -196,3 +199,9 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+# cors settings
+
+CORS_ORIGIN_WHITELIST = [
+     'http://localhost:28000'
+]

@@ -4,7 +4,7 @@ from rest_framework import serializers
 class OwnerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = portfolioOwner
-        fields = ['fname','lname','sitename','github','gitea','linkedin','upwork','resume','headshot','bio','email','phone','tagline','headline']
+        fields = ['fname','lname','sitename','github','gitea','linkedin','upwork','resume','headshot','bio','email','phone','taglines','headline']
 
 class SkillSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

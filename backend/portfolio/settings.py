@@ -59,9 +59,11 @@ INSTALLED_APPS = [
     'captcha',
     'rest_framework',
     'corsheaders',
+    'drf_api_logger',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,7 +74,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'htmlmin.middleware.HtmlMinifyMiddleware',
     'htmlmin.middleware.MarkRequestMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'drf_api_logger.middleware.api_logger_middleware.APILoggerMiddleware',
 ]
 
 ROOT_URLCONF = 'portfolio.urls'
@@ -200,8 +202,16 @@ REST_FRAMEWORK = {
     ]
 }
 
+# api logger settings
+
+DRF_API_LOGGER_DATABASE = True
+
 # cors settings
 
-CORS_ORIGIN_WHITELIST = [
-     'http://localhost:28000'
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS  = [
+    'http://localhost:38000',
+    'http://localhost:28000'
 ]
+

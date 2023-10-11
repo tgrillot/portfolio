@@ -5,7 +5,7 @@ networks:
 
 services:
   db:
-    container_name: portfolio-pg
+    container_name: portfolio-postgres
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data

@@ -12,7 +12,9 @@ import NavBar from './components/navbar'
 axios.defaults.baseURL = import.meta.env.VITE_API_PROXY_URL
 
 function App() {
-  const [owner, setOwner] = useState(0);
+  const [owner, setOwner] = useState([]);
+
+  const windowSize = window.matchMedia("(min-width:768px)")
 
   useEffect(() => {
     const options = {
@@ -28,10 +30,10 @@ function App() {
 
   return (
     <>
-      <div id='themeWrapper' className='theme-dark'>
+      <div id='themeWrapper'>
         <div id='bodyWrapper' className='flex flex-col min-h-screen overflow-x-hidden bg-bgbody text-deftext'>
           <header>
-            <NavBar sitename={owner["sitename"]} headshot={owner["headshot"]} />
+            <NavBar sitename={owner["sitename"]} headshot={owner["headshot"]} taglines={owner["taglines"]} windowSize={windowSize} />
           </header>
           <main className='flex-grow items-center w-full md:w-3/4 m-auto'>
             <Routes>

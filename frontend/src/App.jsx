@@ -6,7 +6,7 @@ import Skills from './pages/skills';
 import Skill from './pages/skill';
 import Projects from './pages/projects';
 import Project from './pages/project';
-import Contact from './pages/Contact';
+import Contact from './pages/contact';
 import NavBar from './components/navbar'
 
 axios.defaults.baseURL = import.meta.env.VITE_API_PROXY_URL

@@ -1,42 +1,133 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* THEMES */
+
+.theme-light {
+    --bgbody: #f2f2f2;
+    --bgheadfoot: #e0e0e0;
+    --bgcard: #ffffff;
+    --bgcardhead: #e0e0e0;
+    --deftext: #333333;
+    --link: #1565c0;
+    --linkhov: #0d47a1;
+    --actionbutton: #1e88e5;
+    --headerfooterlink: #1e88e5;
+    --headerfooterlinkhov: #0d47a1;
+    --error-color: red;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .theme-dark {
+    --bgbody: #292929;
+    --bgheadfoot: #1a1a1a;
+    --bgcard: #333333;
+    --bgcardhead: #1a1a1a;
+    --deftext: #ffffff;
+    --link: #9c27b0;
+    --linkhov: #7b1fa2;
+    --actionbutton: #e040fb;
+    --headerfooterlink: #bb86fc;
+    --headerfooterlinkhov: #6200ea;
+    --error-color: red;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  .theme-incredible {
+    --bgbody: #e4f9e3;
+    --bgheadfoot: #6a1b9a;
+    --bgcard: #ffffff;
+    --bgcardhead: #81c784;
+    --deftext: #333333;
+    --link: #4caf50;
+    --linkhov: #388e3c;
+    --actionbutton: #64dd17;
+    --headerfooterlink: #81c784;
+    --headerfooterlinkhov: #519657;
+    --error-color: red;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+  
+  .theme-sunny {
+    --bgbody: #ffffff;
+    --bgheadfoot: #ffd966;
+    --bgcard: #ffeb99;
+    --bgcardhead: #fff9c4;
+    --deftext: #333333;
+    --link: #2196f3;
+    --linkhov: #1976d2;
+    --actionbutton: #ff5722;
+    --headerfooterlink: #0288d1;
+    --headerfooterlinkhov: #01579b;
+    --error-color: red;
+  }
+  
+  .theme-minty {
+    --bgbody: #d3f6f5;
+    --bgheadfoot: #80cbc4;
+    --bgcard: #ffffff;
+    --bgcardhead: #80deea;
+    --deftext: #333333;
+    --link: #009688;
+    --linkhov: #00796b;
+    --actionbutton: #4db6ac;
+    --headerfooterlink: #00796b;
+    --headerfooterlinkhov: #004c40;
+    --error-color: red;
+  }
+  
+  /* CUSTOM DEFAULTS AND OVERRIDES */
+  
+  a {
+    color: var(--link);
+  }
+  
+  a:hover {
+    color: var(--linkhov);
+    cursor:pointer;
+  }
+  
+  html [type='text']:focus, 
+  html [type='email']:focus, 
+  html textarea:focus {
+    --tw-ring-color: var(--link);
+    border-color: var(--linkhov);
+  }
+  
+  .errorlist {
+    color: var(--error-color)
+  }
+  
+  /* HOME PAGE ANIMATION STUFF */
+  
+  #homeanim text {
+    animation: stroke 5s;
+  }
+  
+  @keyframes stroke {
+    0%  {
+      fill: rgba(72,138,20,0);
+      stroke: var(--link);
+      stroke-dashoffset: 25%;
+      stroke-dasharray: 0 50%;
+      stroke-width: 1;
+    }
+  
+    70% {
+      fill: rgba(72,138,20,0);
+      stroke: var(--link);
+    }
+  
+    80% {
+      fill: rgba(72,138,20,0);
+      stroke: var(--link);
+      stroke-width: 1;
+    }
+  
+    100%{
+      fill: var(--link);
+      stroke: rgba(54,95,160,0);
+      stroke-dashoffset: -25%;
+      stroke-dasharray: 50% 0;
+      stroke-width: 1;
+    }
+  }

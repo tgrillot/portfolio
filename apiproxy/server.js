@@ -24,9 +24,65 @@ app.get('/owner', (req,res)=>{
     };
 
     axios.request(options).then(function (response) {
-        console.log(response.data)
+        console.log(response.data);
         res.json(response.data);
     }).catch(function (error) {
         console.error(error);
     });
-})
+});
+
+app.get('/skills', (req, res)=>{
+    const options = {
+        method: 'GET',
+        url: '/api/skills',
+    };
+
+    axios.request(options).then(function (response){
+        console.log(response.data);
+        res.json(response.data);
+    }).catch(function (error){
+        console.log(error);
+    });
+});
+
+app.get('/skills/:skillId', (req, res) => {
+    const options = {
+        method: 'GET',
+        url: '/api/skills/' + req.params["skillId"],
+    };
+
+    axios.request(options).then(function (response){
+        console.log(response.data);
+        res.json(response.data);
+    }).catch(function (error){
+        console.log(error);
+    });
+});
+
+app.get('/projects', (req, res)=>{
+    const options = {
+        method: 'GET',
+        url: '/api/projects',
+    };
+
+    axios.request(options).then(function (response){
+        console.log(response.data);
+        res.json(response.data);
+    }).catch(function (error){
+        console.log(error);
+    });
+});
+
+app.get('/projects/:projectId', (req, res) => {
+    const options = {
+        method: 'GET',
+        url: '/api/projects/' + req.params["projectId"],
+    };
+
+    axios.request(options).then(function (response){
+        console.log(response.data);
+        res.json(response.data);
+    }).catch(function (error){
+        console.log(error);
+    });
+});

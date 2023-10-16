@@ -11,7 +11,6 @@ const Themer = () => {
         {id: 4, class:'theme-minty', text:"Minty"},
     ]
     
-
     function choiceClass(classID) {
         let classes = 'rounded-sm md:px-3 md:py-1 text-headerfooterlink hover:text-headerfooterlinkhov';
         if (themeClass == colorThemes[classID].class) {
@@ -56,7 +55,7 @@ const Themer = () => {
                     </svg>
                 </nobr>
             </a>
-            <span className="md:hidden underline">Theme</span>
+            <span className="md:hidden underline text-headerfooterlink">Theme</span>
             <ul className="rounded-md transform md:scale-0 group-hover:scale-100 bg-bgheadfoot md:absolute md:right-0 transition duration-150 ease-in-out md:origin-top content-center">
                 {colorThemes.map((theme) => {
                     return (
@@ -65,8 +64,7 @@ const Themer = () => {
                                 {theme["text"]}
                             </a>
                         </li>
-                    )
-                })}
+                    )})}
             </ul>
         </div>
     )

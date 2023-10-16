@@ -4,8 +4,9 @@ import Headshot from './headshot'
 import Tagline from './tagline'
 
 const SiteLogo = ({sitename, headshot, taglines}) => {
-    const pathname = window.location.pathname
     useNavigate()
+
+    const pathname = window.location.pathname
     return (
         <>
             <div className="mb-2 pl-2 pt-2 text-left grow">

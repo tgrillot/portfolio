@@ -131,3 +131,26 @@
       stroke-width: 1;
     }
   }
+
+  .rotato.transition {
+    animation: rotate 2001ms;
+  }
+
+  @keyframes rotate {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    10% {
+      opacity: 100;
+      transform: scale(1);
+    }
+    60% {
+      opacity: 100;
+      transform: translateX(0rem);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(24rem);
+    }
+  }

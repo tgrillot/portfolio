@@ -15,7 +15,7 @@ function rotato(sc) {
             if (activeskill) {
                 activeskill.setAttribute("x-show","true");
             }
-            let inactiveskill = this.getLastSkill(this.skillcount);
+            let inactiveskill = this.getLastSkill();
             if (inactiveskill) {
                 inactiveskill.setAttribute("x-show","false");
             }

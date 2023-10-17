@@ -12,9 +12,11 @@ const Themer = () => {
     ]
     
     function choiceClass(classID) {
-        let classes = 'rounded-sm md:px-3 md:py-1 text-headerfooterlink hover:text-headerfooterlinkhov';
+        let classes = 'rounded-sm md:px-3 md:py-1 hover:text-headerfooterlinkhov';
         if (themeClass == colorThemes[classID].class) {
-            classes = classes + 'text-a-hover'
+            classes = classes + ' text-a-hover'
+        } else {
+            classes = classes + ' text-headerfooterlink'
         }
         return classes;
     }

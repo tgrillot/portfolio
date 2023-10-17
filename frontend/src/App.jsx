@@ -18,7 +18,7 @@ axios.defaults.baseURL = import.meta.env.VITE_API_PROXY_URL
 
 const SBMain = ({tea, hub, res, lin, up, windowSize}) => {
   useNavigate()
-  
+
   const [showSB, setShowSB] = useState(windowSize.matches ? true : false)
   const pathname = window.location.pathname
 
@@ -39,8 +39,6 @@ const SBMain = ({tea, hub, res, lin, up, windowSize}) => {
           </div>
         </>
       )
-  } else {
-      return ""
   }
 }
 
@@ -71,7 +69,7 @@ function App() {
           <main className='flex-grow items-center w-full md:w-3/4 m-auto'>
             <SBMain tea={owner["gitea"]} hub={owner["github"]} res={owner["resume"]} lin={owner["linkedin"]} up={owner["upwork"]} windowSize={windowSize} />
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home hs={owner["headshot"]} headline={owner["headline"]} taglines={owner["taglines"]} fname={owner["fname"]} bio={owner["bio"]} />} />
               <Route path="/skills" element={<Skills />} />
               <Route path="/skills/:slug" element={<Skill />} />
               <Route path="/projects" element={<Projects />} />
